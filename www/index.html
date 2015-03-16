@@ -82,7 +82,8 @@
 		window.onerror = function(msg, url, line) {
 			var idx = url.lastIndexOf("/");
 			if(idx > -1) {url = url.substring(idx+1);}
-			console.log("ERROR in " + url + " (line #" + line + "): " + msg);
+			alert("ERROR in " + url + " (line #" + line + "): " + msg);
+			//console.log("ERROR in " + url + " (line #" + line + "): " + msg);
 		};
 	</script>
 </body>
