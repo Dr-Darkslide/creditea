@@ -17,12 +17,10 @@
 	<section>
 	  <div class="logo-app"><img src="ficheros/logo-app.png" alt=""></div>
 	  <div class="login-box">
-		<h1>INGRESO DE GESTORES</h1>
-		<form method="post">
-		  <input type="text" name="usuario" id="usuario" value="demo" placeholder="USUARIO" />
-		  <input type="password" name="contra" id="contra" value="demo" placeholder="CONTRASEÑA" />
-		  <button type="submit" class="btn btn-primary btn-block btn-large">INGRESAR</button>
-		</form>
+		  <h1>INGRESO DE GESTORES</h1>
+		  <input type="text" name="txt_user" id="txt_user" value="demo" placeholder="USUARIO" />
+		  <input type="password" name="txt_pass" id="txt_pass" value="demo" placeholder="CONTRASEÃ‘A" />
+		  <button type="submit" class="btn btn-primary btn-block btn-large" onclick="inicialLogin();return false;" >INGRESAR</button>
 	  </div>
 	</section>
 </div>
@@ -45,8 +43,8 @@
 				<div class="logo-homeapp"><a href="#"><img src="ficheros/logo-app2.png" alt="" border="0"></a></div>
 				<div class="welcome-box">
 				  <div class="status">
-					<div class="hello"><img src="ficheros/thumb-ingresar.png" alt="" align="absmiddle"> BIENVENIDO HENRY</div>
-					<a class="exit" href="#"></a>
+					<div class="hello"><img src="ficheros/thumb-ingresar.png" alt="" align="absmiddle"> BIENVENIDO <span class="lblUser"></span></div>
+					<a class="exit" onclick="irOpcion('logout');return false;" href="#"></a>
 				  </div> 
 				</div>
 			  </div>

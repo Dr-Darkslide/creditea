@@ -2,36 +2,6 @@
 app.webdb = {};
 app.hdh = {};
 app.webdb.db = null;
-var LocalSVdebug = 0;
-var apiUrl = "http://190.4.59.35/frontend/www/index.php/api";
-var apiBaseUrl = "http://190.4.59.35/frontend/www/index.php";
-
-// Consulto:4981        Envio/Recibo:4980 
-var apiBaseUrlConsulto = "http://190.4.59.35:4981/index.php";
-
-var apiUrlConsulto = "http://190.4.59.35:4981/index.php/api";
-var apiUrlEnvio =    "http://190.4.59.35:4980/index.php/api";
-var apiUrlRecibo =   "http://190.4.59.35:4980/index.php/api";
-
-// Configuraciones IP Alternativas.  //172.16.0.3/
-var apiBaseUrlConsultoAlt = "http://172.16.0.3:4981/index.php";
-
-var apiUrlConsultoAlt = "http://172.16.0.3:4981/index.php/api";
-var apiUrlEnvioAlt =    "http://172.16.0.3:4980/index.php/api";
-var apiUrlReciboAlt =   "http://172.16.0.3:4980/index.php/api";
-
-if(LocalSVdebug == 1) 
-{
-	apiBaseUrlConsulto = apiBaseUrl;
-	apiUrlConsulto = apiUrl;
-	apiUrlEnvio =    apiUrl;
-	apiUrlRecibo =   apiUrl;
-	apiBaseUrlConsultoAlt = apiBaseUrl;
-	apiUrlConsultoAlt = apiUrl;
-	apiUrlEnvioAlt =    apiUrl;
-	apiUrlReciboAlt =   apiUrl;
-}
-
 var inputGlobal1, inputGlobal2; //para almacenar los input actuales 
 var clientGlobal;
 var userLoginGlobal;
@@ -60,15 +30,10 @@ app.bindEvents = function() {
 	    $.mobile.defaultPageTransition = "none";
 	    $.mobile.orientationChangeEnabled = false;
 	    if(sinRepeticion == 0){
-		    document.addEventListener('deviceready', app.onDeviceReady, false);
-		    //app.onDeviceReady(); //para navegador
+		    //document.addEventListener('deviceready', app.onDeviceReady, false);
+		    app.onDeviceReady(); //para navegador
 		    sinRepeticion = 1;
 	    }
-		//aplicamos mascaras a identidades y telefonos
-		$(".format_identidad").mask("0000-0000-00000");
-		$(".format_identidad").on("blur", verificarIdentidad);
-		$(".format_phone").mask("0000-0000");
-		$(".format_phone").on("blur", verificarTelefono);
 	});
 };
 
@@ -83,19 +48,13 @@ app.onDeviceReady = function() {
 		  textVisible: true,
 		  html: "<img style='padding-left:35px' src='css/themes/images/ajax-loader.gif'/>"
 	});
-	
-	changeBackground();
-	addingDynamicImage();
-	
+
 	//Abrimos la base
 	app.webdb.abrir();
-	
 	//Creamos Tablas
 	app.webdb.crear_tablas();
-	
 	//Mostramos Ultima Sincronizacion
 	getUltimaSincronizacion();
-	
 	//salir cuando se presione el boton atras en el cel
 	document.addEventListener("backbutton", function(){
         navigator.notification.confirm(
@@ -109,12 +68,10 @@ app.onDeviceReady = function() {
                 ['Si','No']         // buttonLabels
             );
 	}, false);
-	
 	//funciones cuando este en pause
 	document.addEventListener("pause", function(){
 		console.log('app entra en pause.');
-	}, false);
-	
+	}, false);	
 	$.mobile.loading("hide");
 };
 
@@ -143,17 +100,9 @@ function isActiveConnection()
 			ret = false;
 		} else {
 			if(networkState == Connection.WIFI) {
-				apiBaseUrlConsulto = "http://172.16.0.3:4981/index.php";
-
-				apiUrlConsulto = "http://172.16.0.3:4981/index.php/api";
-				apiUrlEnvio =    "http://172.16.0.3:4980/index.php/api";
-				apiUrlRecibo =   "http://172.16.0.3:4980/index.php/api";
+				
 			} else {
-				apiBaseUrlConsulto = "http://190.4.59.35:4981/index.php";
-
-				apiUrlConsulto = "http://190.4.59.35:4981/index.php/api";
-				apiUrlEnvio =    "http://190.4.59.35:4980/index.php/api";
-				apiUrlRecibo =   "http://190.4.59.35:4980/index.php/api";
+				
 			}
 			ret = true;
 		}
@@ -163,6 +112,7 @@ function isActiveConnection()
 
 function inicialLogin() 
 {
+	var db = app.webdb.db;
 	if($('#txt_user').val().trim().length == 0){
 		$('#txt_user').css('border','1px solid red');
 		alert("El Usuario es requerido.");
@@ -189,76 +139,29 @@ function inicialLogin()
 		$.mobile.loading("hide");
 		alert('Para iniciar sesión debe tener conexión activa a Internet');
 	} else {
-		$.ajax({
-			type: "POST",
-			dataType: 'jsonp',
-			jsonp: "jsoncallback",
-			url: apiUrlConsulto+ "/login",
-			data: ({usuario : datosUsuario,
-					password : datosPassword,
-					equipo : (typeof device == 'undefined')?'Desktop':device.uuid
-			}),
-			cache: false,
-			dataType: "text",
-			timeout: 60000, //3 second timeout
-			beforeSend: function(objeto){
-				$.mobile.loading( "show", {
-					  textVisible: true,
-					  html: "<img style='padding-left:35px' src='css/themes/images/ajax-loader.gif'/>"
-				});
-				//app_log("inicia logeo. Usuario:"+datosUsuario);
-				console.log("inicia logeo. Usuario:"+datosUsuario);
-			},
-			success: function(datos){
-				var respuestaServer = JSON.parse(datos);
-				//console.log(respuestaServer);
-				$.mobile.loading("hide");
-				if (respuestaServer.validacion == "ok") {
-					userLoginGlobal = new UserLogin();
-					userLoginGlobal.setNombre($('#txt_user').val());
-					userLoginGlobal.setPass($('#txt_pass').val());
-					userLoginGlobal.setUserid(respuestaServer.userid);
-					userLoginGlobal.setRolename(respuestaServer.rolename);
-					userLoginGlobal.setCompanyName(respuestaServer.companyName);
-					userLoginGlobal.setCompanyId(respuestaServer.companyId);
-					userLoginGlobal.setCompanyPlace(respuestaServer.companyPlace);
-					userLoginGlobal.setNombreCompleto(respuestaServer.fullname);
-					//----registrar que el user esta logeado
-					db.transaction(function(tx){
-						tx.executeSql("UPDATE USERLOGIN SET NOMBRE = ?,NOMBRE_COMPLETO = ?, PASS = ?,USERID = ?,ROLENAME = ?,COMPANYNAME = ?,COMPANYID = ?,COMPANYPLACE = ?,LOGEADO = 'S',MENSAJE = ?",[$('#txt_user').val(),respuestaServer.fullname,$('#txt_pass').val(),respuestaServer.userid,respuestaServer.rolename,respuestaServer.companyName,respuestaServer.companyId,respuestaServer.companyPlace,respuestaServer.mensajePortada]);
-					});
-					//--------------------------------------
-					//console.log(respuestaServer.rolename);
-					if(respuestaServer.rolename == "admonGears"){
-						$('#div_btn_formDinamicos').show();
-						$('#div_btn_datosSincro').hide();
-						$('#btn_sincro').hide();
-					}else{
-						$('#div_btn_formDinamicos').hide();
-						$('#div_btn_datosSincro').show();
-						$('#btn_sincro').show();
-					}
-					$('#sp_mensaje').html(respuestaServer.mensajePortada);	
-					$('#fh_publicacion').html(respuestaServer.fechaMensajePortada);					
-					$('.lblUser').html(respuestaServer.userid);
-					$('#txt_pass').val('');
-					irOpcion('principal');
-				} else {
-					alert(respuestaServer.mensaje);
-				}
-				
-				$('#sp_fec_sincronizacion').html($("#lstdSincro").val());
-				$('#sp_fec_sincronizacion2').html($("#lstdSincro").val());
-			},
-			error: function(objeto, mensaje, otroobj){
-				$.mobile.loading("hide");
-				if(mensaje == 'timeout') {
-					alert('Se agoto el tiempo de espera, imposible conectar con el servidor. (posible falla en la conexion de internet o desconexion del servidor).'); 
-				} else {
-					alert(mensaje + ": " + objeto.responseText);
-				}
-			}
-		});
+		$.mobile.loading("hide");
+		if (datosUsuario == "demo" && datosPassword == "demo") {
+			userLoginGlobal = new UserLogin();
+			userLoginGlobal.setNombre(datosUsuario);
+			userLoginGlobal.setPass(datosPassword);
+			userLoginGlobal.setUserid("demo");
+			userLoginGlobal.setRolename("Mentor");
+			userLoginGlobal.setCompanyName("Creditea");
+			userLoginGlobal.setCompanyId("1");
+			userLoginGlobal.setCompanyPlace("Creditea SV");
+			userLoginGlobal.setNombreCompleto("Usuarios Demostracion");
+			//----registrar que el user esta logeado
+			db.transaction(function(tx){
+				tx.executeSql("UPDATE USERLOGIN SET NOMBRE = ?,NOMBRE_COMPLETO = ?, PASS = ?,USERID = ?,ROLENAME = ?,COMPANYNAME = ?,COMPANYID = ?,COMPANYPLACE = ?,LOGEADO = 'S',MENSAJE = ?",[datosUsuario,"Usuario demostracion",datosPassword,"demo","Mentor","Creditea","1","Creditea SV","Bienvenidos"]);
+			});
+			//--------------------------------------
+			//console.log(respuestaServer.rolename);		
+			$('.lblUser').html("demo");
+			$('#txt_pass').val('');
+			irOpcion('principal');
+		} else {
+			alert("Error a loguearse");
+		}
 	}
 }
 //--------------------------------------------------------
@@ -268,7 +171,7 @@ app.webdb.abrir = function() {
 	var dbSize = 250 * 1024 * 1024; // 25MB
 	
 	//if(app.webdb.db == null) {
-		app.webdb.db = openDatabase("funMicroHerHonduras", "1.0", "Datos para Microfinaciera", dbSize);
+		app.webdb.db = openDatabase("CrediteaDB", "1.0", "Datos para creditea", dbSize);
 	//}
 	
 	//probamos la integiradad
