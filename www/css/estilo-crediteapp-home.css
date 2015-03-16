@@ -1,0 +1,150 @@
+/************************************************************************************************/
+body {
+	margin: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+* {margin: 0; 
+	padding: 0; 
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+section {
+	width: 1280px;
+	height: 795px;
+	background: url(../ficheros/bg-homeapp.jpg) no-repeat center top;
+	margin: 0 auto
+}
+
+.content {
+	width: 1280px;
+	height: 795px;
+}
+
+.noeapp-nav {
+	width: 85px;
+	height: 795px;
+	position: absolute;
+	background: #6D7985;
+	z-index: 1;
+	}
+	.nav-buttons {
+		width: 85px;
+		height: 82px;
+		border-bottom: 1px solid #656970; 
+		text-align: center;
+		padding-top: 13px;
+	}
+	.active {background: #ED1B24;}
+	.nav-buttons:hover {background: #85909C;}
+	.active:hover {background: #ED1B24;}
+
+.head {
+	width: 1195px;
+	background: #fff;
+	float: right;
+}
+
+.noeapp-head {
+	width: 1133px;
+	height: 80px;
+	margin: 0 auto;
+	background: #fff;
+	}
+	.logo-homeapp {
+	float: left;
+	margin-top: 5px;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+	}
+	.welcome-box {
+		width: 300px;
+		height: 55px;
+		float: right;
+		margin: 25px 10px 0 0;
+		}
+		.status {
+			width: 270px;
+			height: 28px;
+			float: right;
+			}
+			.hello {
+				width: 160px;
+				height: 28px;
+				padding: 4px 0;
+				text-align: center;
+				border-radius: 5px;
+				border: 1px solid #22ACAE;
+				float: left;
+				color: #707980;
+				font-size: 11px;
+				font-weight: bold;
+			}
+			a.exit {
+				display: block;
+				width: 97px;
+				height: 28px;
+				background: url(../ficheros/exit-button.png);
+				float: right;
+			}
+			a.exit:hover {
+				display: block;
+				width: 97px;
+				height: 28px;
+				background: url(../ficheros/exit-button.png) center bottom;
+			}
+
+.container-home-app {
+	width: 880px;
+	margin: 80px auto 0;
+	clear: both;
+	min-height: 472px;
+	background: url(../ficheros/bg-cont-homeapp.jpg) no-repeat center top;
+	}
+
+.botonera {
+	width: 1155px;
+	height: 193px;
+	background: url(../ficheros/bg-botonera-homeapp.png) no-repeat;
+	padding-right: 30px;
+	position: absolute;
+	z-index: 2;
+
+	}
+	.botonera a {
+		display: block;
+		width: 230px;
+		height: 67px;
+		float: right;
+		text-decoration: none;
+		font-size: 22px;
+		color: #22ACAE;
+		margin: 29px 72px 0 0;
+		border-radius: 7px;
+		padding-top: 20px;
+		text-align: center;
+		background: #ffffff; /* Old browsers */
+		background: -moz-linear-gradient(top,  #ffffff 0%, #f0f4f6 51%, #ffffff 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(51%,#f0f4f6), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #ffffff 0%,#f0f4f6 51%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #ffffff 0%,#f0f4f6 51%,#ffffff 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #ffffff 0%,#f0f4f6 51%,#ffffff 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #ffffff 0%,#f0f4f6 51%,#ffffff 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+	}
+
+	.botonera a:hover {
+background: #f2f5f6; /* Old browsers */
+background: -moz-linear-gradient(top,  #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f5f6), color-stop(37%,#e3eaed), color-stop(100%,#c8d7dc)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=0 ); /* IE6-9 */
+
+	}
