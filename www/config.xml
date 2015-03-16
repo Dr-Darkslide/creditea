@@ -5,7 +5,7 @@
 		xmlns:android   = "http://schemas.android.com/apk/res/android"
 		version = "0.1.0b">
 	<name>CrediteApp</name>
-	<description>Aplicación interna para los gestores creditea.</description>
+	<description>AplicaciÃ³n interna para los gestores creditea.</description>
 	<author href="http://www.creativios.com" email="info@cretivios.com">Creativios</author>
 <!-- Main Configuration -->
 <gap:config-file platform="android" parent="/manifest">
