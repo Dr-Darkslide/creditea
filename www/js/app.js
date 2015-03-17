@@ -1,6 +1,6 @@
 ﻿var app = {};
 app.webdb = {};
-app.hdh = {};
+app.creditea = {};
 app.webdb.db = null;
 var inputGlobal1, inputGlobal2; //para almacenar los input actuales 
 var clientGlobal;
@@ -186,7 +186,7 @@ app.webdb.onError = function(err){
 	alert('Error: '+err.code+" - "+err.message);	
 };
 
-app.hdh.verificarLogin = function(direct) {
+app.creditea.verificarLogin = function(direct) {
 	var valid = true;
 	if(typeof userLoginGlobal == 'undefined'){
 		if(direct == 'undefined')
@@ -640,7 +640,7 @@ function irOpcion(idPagina, divLimpiar, elem)
 		eventosAvanzados();
 	}
 	$('.lblUser').html(userLoginGlobal.getUserid());
-	if(app.hdh.verificarLogin()){
+	if(app.creditea.verificarLogin()){
 		if(idPagina == 'garantias_list'){
 			if(validarCredito()){
 				$.mobile.changePage($('#pag_'+idPagina));
@@ -1176,7 +1176,7 @@ function cargarListaGarantiasCliente(garantia,inicio, por_pagina, limpiar)
 
 function llenarClienteSesion(idCliente)
 {
-	app.hdh.verificarLogin(1);
+	app.creditea.verificarLogin(1);
 	var db = app.webdb.db;
 	var html = "";
 	db.transaction(function(tx){
@@ -1366,7 +1366,7 @@ function llenarClienteSesion(idCliente)
 
 function llenarSolicitud(idSolicitud, idForm, nuevo, sel) 
 {
-	app.hdh.verificarLogin(1);
+	app.creditea.verificarLogin(1);
 	var db = app.webdb.db;
 	var html = "";
 	db.transaction(function(tx){
@@ -1606,7 +1606,7 @@ function mostrarGarantias(idSolicitud)
 
 function guardarFormulario(idDiv, btn)
 {
-	app.hdh.verificarLogin(1);
+	app.creditea.verificarLogin(1);
 	if(!$(btn).attr("disabled")){
 		$(btn).attr("disabled","disabled");
 		var jsonText;
@@ -2337,7 +2337,7 @@ function guardarFormulario(idDiv, btn)
 
 function guardarClienteServer(obj) 
 {
-	app.hdh.verificarLogin(1);
+	app.creditea.verificarLogin(1);
 	var db = app.webdb.db;
 	db.transaction(function(tx){
 		tx.executeSql("SELECT ID_CAP_CUSTOMER FROM CAP_CUSTOMER WHERE TYPE_IDENTITY = ? AND IDENTITY = ?",[obj.TYPE_IDENTITY, obj.IDENTITY],
@@ -2361,7 +2361,7 @@ function guardarClienteServer(obj)
 
 function guardarFormularioServer(obj) 
 {
-	app.hdh.verificarLogin(1);
+	app.creditea.verificarLogin(1);
 	var db = app.webdb.db;
 	db.transaction(function(tx){
 		//tx.executeSql("SELECT ID FROM STORAGE WHERE FORM = ? AND SUB_FORM=? AND CUSTOMER_REQUESTS = ?",[obj.FORM, obj.SUB_FORM, obj.CUSTOMER_REQUEST],

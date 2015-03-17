@@ -1,12 +1,5 @@
 /************************************************************************************************/
-body {
-	margin: 0px;
-	background: url(../ficheros/bg-login.jpg) no-repeat center top;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
-}
-
-#pag_login .section {
+#pag_login section {
 	width: 1280px;
 	height: 795px;
 	margin: 0 auto;
@@ -75,23 +68,27 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#50a09d', end
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6cced0', endColorstr='#22acae',GradientType=0 ); /* IE6-9 */
 
 }
-
-#pag_login form {
-	background: url(../ficheros/bg-form.png) no-repeat;
-	overflow: hidden;
+#pag_login #form_bg {
+    background: url("../ficheros/bg-form.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    overflow: hidden;
 }
 #pag_login input { 
-	width: 88%;
 	height: 41px;
-	margin-bottom: 21px; 
 	background: #F4F7F8;
 	border: none;
-	outline: none;
 	padding: 12px 11px 11px 12px;
 	font-size: 14px;
 	color: #B1C3CD;
 	font-weight: bold;
 	border: 1px solid #ABBAC3;
 	border-radius: 9px;
+}
+#pag_login .login-field {
+	width: 91%;
 	float: right;
+	margin-top: -0.6em;
+}
+
+#pag_login .login-field.mb12 {
+	margin-bottom:1.2em;
 }

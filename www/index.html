@@ -18,9 +18,11 @@
 	  <div class="logo-app"><img src="ficheros/logo-app.png" alt=""></div>
 	  <div class="login-box">
 		  <h1>INGRESO DE GESTORES</h1>
-		  <input type="text" name="txt_user" id="txt_user" value="demo" placeholder="USUARIO" />
-		  <input type="password" name="txt_pass" id="txt_pass" value="demo" placeholder="CONTRASEÑA" />
-		  <button type="submit" class="btn btn-primary btn-block btn-large" onclick="inicialLogin();return false;" >INGRESAR</button>
+		  <div id="form_bg">
+			  <div class="login-field mb12"><input type="text" name="txt_user" id="txt_user" value="demo" placeholder="USUARIO" /></div>
+			  <div class="login-field"><input type="password" name="txt_pass" id="txt_pass" value="demo" placeholder="CONTRASEÑA" /></div>
+			  <button type="submit" class="btn btn-primary btn-block btn-large" onclick="inicialLogin();return false;" >INGRESAR</button>
+		  </div>
 	  </div>
 	</section>
 </div>
