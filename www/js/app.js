@@ -30,8 +30,8 @@ app.bindEvents = function() {
 	    $.mobile.defaultPageTransition = "none";
 	    $.mobile.orientationChangeEnabled = false;
 	    if(sinRepeticion == 0){
-		    document.addEventListener('deviceready', app.onDeviceReady, false);
-		    //app.onDeviceReady(); //para navegador
+		    //document.addEventListener('deviceready', app.onDeviceReady, false);
+		    app.onDeviceReady(); //para navegador
 		    sinRepeticion = 1;
 	    }
 	});

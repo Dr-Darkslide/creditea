@@ -12,55 +12,132 @@
   <link rel="stylesheet" type="text/css" href="css/estilo-crediteapp-home.css"/>
 </head>
 <body>
-<!-- PAGE login -->
-<div data-role="page" id="pag_login">
-	<section>
-	  <div class="logo-app"><img src="ficheros/logo-app.png" alt=""></div>
-	  <div class="login-box">
-		  <h1>INGRESO DE GESTORES</h1>
-		  <div id="form_bg">
-			  <div class="login-field mb12"><input type="text" name="txt_user" id="txt_user" value="demo" placeholder="USUARIO" /></div>
-			  <div class="login-field"><input type="password" name="txt_pass" id="txt_pass" value="demo" placeholder="CONTRASEÑA" /></div>
-			  <button type="submit" class="btn btn-primary btn-block btn-large" onclick="inicialLogin();return false;" >INGRESAR</button>
-		  </div>
-	  </div>
-	</section>
-</div>
-
-<!-- PAGE principal-->
-<div data-role="page" data-theme="a" class="bg-home" id="pag_principal">
-	<div role="main" class="home">
+	<!-- PAGE login -->
+	<div data-role="page" id="pag_login">
 		<section>
-			<div class="content">
-			  <div class="noeapp-nav">
-				<div class="nav-buttons"><a href="#"><img src="ficheros/inbox-logo.jpg" alt="" border="0"></a></div>
-				<div class="nav-buttons active"><a href="#"><img src="ficheros/bot-listado.png" alt="" border="0"></a></div>
-				<div class="nav-buttons"><a href="#"><img src="ficheros/bot-historial.png" alt="" border="0"></a></div>
-				<div class="nav-buttons"><a href="#"><img src="ficheros/bot-mensaje.png" alt="" border="0"></a></div>
-				<div class="nav-buttons"><a href="#"><img src="ficheros/bot-actualizar.png" alt="" border="0"></a></div>
-				<div class="nav-buttons"><a href="#"><img src="ficheros/bot-ajustes.png" alt="" border="0"></a></div>
+		  <div class="logo-app"><img src="ficheros/logo-app.png" alt=""></div>
+		  <div class="login-box">
+			  <h1>INGRESO DE GESTORES</h1>
+			  <div id="form_bg">
+				  <div class="login-field mb12"><input type="text" name="txt_user" id="txt_user" value="demo" placeholder="USUARIO" /></div>
+				  <div class="login-field"><input type="password" name="txt_pass" id="txt_pass" value="demo" placeholder="CONTRASEÑA" /></div>
+				  <button type="submit" class="btn btn-primary btn-block btn-large" onclick="inicialLogin();return false;" >INGRESAR</button>
 			  </div>
-			 <div class="head">
-			  <div class="noeapp-head">
-				<div class="logo-homeapp"><a href="#"><img src="ficheros/logo-app2.png" alt="" border="0"></a></div>
-				<div class="welcome-box">
-				  <div class="status">
-					<div class="hello"><img src="ficheros/thumb-ingresar.png" alt="" align="absmiddle"> BIENVENIDO <span class="lblUser"></span></div>
-					<a class="exit" onclick="irOpcion('logout');return false;" href="#"></a>
-				  </div> 
-				</div>
-			  </div>
-			</div> 
-			  <div class="container-home-app"></div>
-			  <div class="botonera">
-				<a href="#">INGRESAR NUEVO</a>
-				<a href="#">LISTADO CLIENTES</a>
-				<a href="#">HERRAMIENTAS</a>
-			  </div>
-			</div>
+		  </div>
 		</section>
 	</div>
-</div>
+
+	<!-- PAGE principal-->
+	<div data-role="page" class="bg-home" id="pag_principal">
+		<div role="main" class="home">
+			<section>
+				<div class="content">
+				  <div class="noeapp-nav">
+					<div class="nav-buttons"><a href="#"><img src="ficheros/inbox-logo.jpg" alt="" border="0"></a></div>
+					<div class="nav-buttons"><a href="#"><img src="ficheros/bot-listado.png" alt="" border="0"></a></div>
+					<div class="nav-buttons"><a href="#"><img src="ficheros/bot-historial.png" alt="" border="0"></a></div>
+					<div class="nav-buttons"><a href="#"><img src="ficheros/bot-mensaje.png" alt="" border="0"></a></div>
+					<div class="nav-buttons"><a href="#"><img src="ficheros/bot-actualizar.png" alt="" border="0"></a></div>
+					<div class="nav-buttons"><a href="#"><img src="ficheros/bot-ajustes.png" alt="" border="0"></a></div>
+				  </div>
+				 <div class="head">
+				  <div class="noeapp-head">
+					<div class="logo-homeapp"><a href="#"><img src="ficheros/logo-app2.png" alt="" border="0"></a></div>
+					<div class="welcome-box">
+					  <div class="status">
+						<div class="hello"><img src="ficheros/thumb-ingresar.png" alt="" align="absmiddle"> BIENVENIDO <span class="lblUser"></span></div>
+						<a class="exit" onclick="irOpcion('logout');return false;" href="#"></a>
+					  </div> 
+					</div>
+				  </div>
+				</div> 
+				  <div class="container-home-app"></div>
+				  <div class="botonera">
+					<a href="#" onclick="irOpcion('herramientas'); return false;">HERRAMIENTAS</a>
+					<a href="#" onclick="irOpcion('clientes_list'); return false;">LISTADO CLIENTES</a>
+					<a href="#" onclick="irOpcion('clientes','div_datosGenerales'); return false;">INGRESAR NUEVO</a>
+				  </div>
+				</div>
+			</section>
+		</div>
+	</div>
+	
+	<!-- PAGE clientes_list-->
+	<div data-role="page" class="bg-interna" id="pag_clientes_list">
+		<div role="main" class="interna">
+			<section>
+				<div class="content">
+					<div class="noeapp-nav">
+						<div class="nav-buttons"><a href="#"><img src="ficheros/inbox-logo.jpg" alt="" border="0"></a></div>
+						<div class="nav-buttons active"><a href="#"><img src="ficheros/bot-listado.png" alt="" border="0"></a></div>
+						<div class="nav-buttons"><a href="#"><img src="ficheros/bot-historial.png" alt="" border="0"></a></div>
+						<div class="nav-buttons"><a href="#"><img src="ficheros/bot-mensaje.png" alt="" border="0"></a></div>
+						<div class="nav-buttons"><a href="#"><img src="ficheros/bot-actualizar.png" alt="" border="0"></a></div>
+						<div class="nav-buttons"><a href="#"><img src="ficheros/bot-ajustes.png" alt="" border="0"></a></div>
+					</div>
+					<div class="head">
+						<div class="noeapp-head">
+							<div class="logo-homeapp"><a href="#"><img src="ficheros/logo-app2.png" alt="" border="0"></a></div>
+							<div class="welcome-box">
+								<div class="status">
+								<div class="hello"><img src="ficheros/thumb-ingresar.png" alt="" align="absmiddle"> BIENVENIDO <span class="lblUser"></span></div>
+									<a class="exit" onclick="irOpcion('logout');return false;" href="#"></a>
+								</div> 
+							</div>
+						</div>
+					</div> 
+					<div class="container-home-app">
+						<div class="cuerpo-interna" style="overflow: scroll;height: 520px;">
+							<div id="grid-clients" class="grid-view">
+								<table border="1" style="width:100%;border-collapse:collapse;" id="tblClients" class="table-striped table-bordered ui-responsive"
+								data-filter="false" data-input="#txt_findCliente" data-role="table">
+									<thead>
+										<tr>
+											<th>&nbsp;</th><th>#</th><th>Código</th><th>Nombres</th><th>Apellidos</th><th>Identidad</th><th>&nbsp;</th>
+										</tr>
+									</thead>
+									<tbody id="ul_detalleCliente_list"></tbody>
+								</table>
+								<input type="hidden" name="hdnpag" id="hdnpag" value="0" />
+								<input type="button" id="btnpagcli" data-role="button" data-theme="b" onclick="cargarListaCliente(0,$('#hdnpag').val(),250,0);return false;" value="Cargar más información" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<div data-role="footer" data-position="fixed">			
+			<div data-role="navbar">
+				<ul>
+					<li><a data-theme="b" href="#" onclick="limpiarForm('div_datosGenerales'); irOpcion('principal');return false;"><img src="images/bot-regresar.png" width="176" height="38" border="0" /></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!-- PAGE Nuevo Cliente-->
+	<div data-role="page" class="bg-interna" id="pag_clientes">
+		<div class="interna">
+			<div class="head-clientes">
+					<div class="titulo-categoria"><img src="images/ico-categoria01.png" width="89" height="70" align="absmiddle" /> Información del Cliente</div>
+			</div>
+			<div role="main" class="cuerpo-interna" id="div_datosGenerales"></div><!-- /content -->
+		</div>
+		<div data-role="footer" data-position="fixed">			
+			<div data-role="navbar">
+				<ul>
+					<li><a data-theme="b" href="#" onclick="var r = confirm('¿Desea salir del formulario?');if(r == true){limpiarForm('div_datosGenerales'); irOpcion('principal');return false;}"><img src="images/bot-regresar.png" width="176" height="38" border="0" /></a></li>
+					<li><a data-theme="b" href="#" onclick="guardarFormulario('div_datosGenerales', this);return false;"><img src="images/bot-guardar.png" width="176" height="38" border="0" /></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!-- PAGE Nuevo Cliente-->
+	<div data-role="page" class="bg-interna" id="pag_herramientas">
+	
+	</div>
+	<!-- Cargamos los Scripts -->
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/jquery.mobile-1.4.2.min.js"></script>
 	<script type="text/javascript" src="js/fastclick.js"></script>
