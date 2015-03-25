@@ -90,6 +90,8 @@ function app_log(tarea)
 
 function isActiveConnection() 
 {
+	return true;
+	/*
 	if(typeof navigator.connection == 'undefined'){
 		return true;
 	} else {
@@ -108,6 +110,7 @@ function isActiveConnection()
 		}
 		return ret;
 	}
+	*/
 }
 
 function inicialLogin() 
