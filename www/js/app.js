@@ -236,7 +236,7 @@ function limpiarForm(idDiv)
 		$(input).val("");
 	});
 	$.each($('#'+idDiv+' select'), function(index, select){
-		$(select).parent().css({"background-color":"#009245"});
+		//$(select).parent().css({"background-color":"#009245"});
 		$(select).val($(select).children('option:first').val());
 		$(select).selectmenu('refresh');
 	});
@@ -1636,7 +1636,7 @@ function guardarFormulario(idDiv, btn)
 				myselect.parent().css({"background-color":"red"});
 				flag = 1;
 			} else {
-				myselect.parent().css({"background-color":"#009245"});
+				// myselect.parent().css({"background-color":"#009245"});
 			}
 		});
 		if(idDiv == 'div_datosGenerales'){

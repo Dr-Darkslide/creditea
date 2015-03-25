@@ -109,7 +109,7 @@
 		<div data-role="footer" data-position="fixed">			
 			<div data-role="navbar">
 				<ul>
-					<li><a data-theme="b" href="#" onclick="limpiarForm('div_datosGenerales'); irOpcion('principal');return false;"><img src="images/bot-regresar.png" width="176" height="38" border="0" /></a></li>
+					<li><a data-theme="b" href="#" onclick="limpiarForm('div_datosGenerales'); irOpcion('principal');return false;"><img src="ficheros/bot-regresar.png" width="176" height="38" border="0" /></a></li>
 				</ul>
 			</div>
 		</div>
@@ -117,17 +117,39 @@
 	
 	<!-- PAGE Nuevo Cliente-->
 	<div data-role="page" class="bg-interna" id="pag_clientes">
-		<div class="interna">
-			<div class="head-clientes">
-					<div class="titulo-categoria"><img src="images/ico-categoria01.png" width="89" height="70" align="absmiddle" /> Información del Cliente</div>
-			</div>
+		<div role="main" class="interna">
+			<section>
+				<div class="content">
+					<div class="noeapp-nav">
+						<div class="nav-buttons"><a href="#"><img src="ficheros/inbox-logo.jpg" alt="" border="0"></a></div>
+						<div class="nav-buttons active"><a href="#"><img src="ficheros/bot-listado.png" alt="" border="0"></a></div>
+						<div class="nav-buttons"><a href="#"><img src="ficheros/bot-historial.png" alt="" border="0"></a></div>
+						<div class="nav-buttons"><a href="#"><img src="ficheros/bot-mensaje.png" alt="" border="0"></a></div>
+						<div class="nav-buttons"><a href="#"><img src="ficheros/bot-actualizar.png" alt="" border="0"></a></div>
+						<div class="nav-buttons"><a href="#"><img src="ficheros/bot-ajustes.png" alt="" border="0"></a></div>
+					</div>
+					<div class="head">
+						<div class="noeapp-head">
+							<div class="logo-homeapp"><a href="#"><img src="ficheros/logo-app2.png" alt="" border="0"></a></div>
+							<div class="welcome-box">
+								<div class="status">
+								<div class="hello"><img src="ficheros/thumb-ingresar.png" alt="" align="absmiddle"> BIENVENIDO <span class="lblUser"></span></div>
+									<a class="exit" onclick="irOpcion('logout');return false;" href="#"></a>
+								</div> 
+							</div>
+						</div>
+					</div> 
+					<div class="container-home-app">
 			<div role="main" class="cuerpo-interna" id="div_datosGenerales"></div><!-- /content -->
+		</div>
+				</div>
+			</section>
 		</div>
 		<div data-role="footer" data-position="fixed">			
 			<div data-role="navbar">
 				<ul>
-					<li><a data-theme="b" href="#" onclick="var r = confirm('¿Desea salir del formulario?');if(r == true){limpiarForm('div_datosGenerales'); irOpcion('principal');return false;}"><img src="images/bot-regresar.png" width="176" height="38" border="0" /></a></li>
-					<li><a data-theme="b" href="#" onclick="guardarFormulario('div_datosGenerales', this);return false;"><img src="images/bot-guardar.png" width="176" height="38" border="0" /></a></li>
+					<li><a data-theme="b" href="#" onclick="var r = confirm('¿Desea salir del formulario?');if(r == true){limpiarForm('div_datosGenerales'); irOpcion('principal');return false;}"><img src="ficheros/bot-regresar.png" width="176" height="38" border="0" /></a></li>
+					<li><a data-theme="b" href="#" onclick="guardarFormulario('div_datosGenerales', this);return false;"><img src="ficheros/bot-guardar.png" width="176" height="38" border="0" /></a></li>
 				</ul>
 			</div>
 		</div>
