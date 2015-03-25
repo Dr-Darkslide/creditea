@@ -92,3 +92,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#50a09d', end
 #pag_login .login-field.mb12 {
 	margin-bottom:1.2em;
 }
+
+#tblClients thead th {
+	background-color: #22acae;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.cuerpo-interna {
+	padding-top: 25px;
+}

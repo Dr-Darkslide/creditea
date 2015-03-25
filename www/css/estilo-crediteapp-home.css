@@ -105,7 +105,13 @@ section {
 	min-height: 472px;
 	background: url(../ficheros/bg-cont-homeapp.jpg) no-repeat center top;
 	}
-
+.container-app {
+  width: 880px;
+  margin: 80px auto 0;
+  clear: both;
+  min-height: 472px;
+  background: url(../ficheros/bg-cont-app.jpg) no-repeat center top;
+}
 .botonera {
 	width: 1155px;
 	height: 193px;

@@ -853,7 +853,7 @@ function cargarListaCliente(factura, inicio, por_pagina, limpiar)
 	factura = factura || 0;
 	limpiar = limpiar || 0;
 	var db = app.webdb.db;
-	var query = "SELECT ID_CAP_CUSTOMER, FIRSTNAME, MIDNAME, LASTNAME1, LASTNAME2, NATIONALITY, IDENTITY FROM CAP_CUSTOMER ORDER BY FIRSTNAME, LASTNAME1 LIMIT "+por_pagina+" OFFSET "+inicio;
+	var query = "SELECT ID_CAP_CUSTOMER, FIRSTNAME, MIDNAME, LASTNAME1, LASTNAME2, NATIONALITY, IDENTITY, CREDITO FROM CAP_CUSTOMER ORDER BY FIRSTNAME, LASTNAME1 LIMIT "+por_pagina+" OFFSET "+inicio;
 	var html = "";
 	db.transaction(function(tx){
 		tx.executeSql(query,[],function(tx,results){
@@ -869,8 +869,17 @@ function cargarListaCliente(factura, inicio, por_pagina, limpiar)
 					curr =  eval(inicio) + i + 1;
 				}
 				html = '<tr><td><img style="width:16px;height:16px;" src="images/ico-perfil.png" /></td><td>'+curr+'</td>';
-				html += '<td style="width: 60px">'+row['ID_CAP_CUSTOMER']+'</td><td>'+row['FIRSTNAME'].toUpperCase()+' '+row['MIDNAME'].toUpperCase()+'</td><td>'+row['LASTNAME1'].toUpperCase()+' '+row['LASTNAME2'].toUpperCase()+'</td><td>'+row['IDENTITY']+'</td>';
+				html += '<td style="width: 60px">'+row['ID_CAP_CUSTOMER']+'</td><td></td><td>'+row['IDENTITY']+'</td>';
 				html += '<td width="16%"><img src="images/bot-seleccionar.png" onclick="limpiarForm(\'div_datosGenerales\'); llenarClienteSesion('+row['ID_CAP_CUSTOMER']+');return false;"/></td></tr>';
+				html = '<tr>';
+				html += '<td>'+row['ID_CAP_CUSTOMER']+'</td>';
+				html += '<td>'+row['FIRSTNAME'].toUpperCase()+' '+row['MIDNAME'].toUpperCase()+' '+row['LASTNAME1'].toUpperCase()+' '+row['LASTNAME2'].toUpperCase()+'</td>';
+				html += '<td>'+row['CREDITO']+'</td>';
+				html += '<td><img src="ficheros/alert-prop.png" /></td>';
+				html += '<td><img src="ficheros/btn-ver.png" />&nbsp;';
+				html += '<img src="ficheros/btn-editar.png" />&nbsp;';
+				html += '<img src="ficheros/btn-sincro.png" /></td>';
+				html += '</tr>';
 				$('#ul_detalleCliente_list').append(html);
 			}//fin for
 			$("#hdnpag").val(eval(inicio)+por_pagina);
